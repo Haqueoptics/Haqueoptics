@@ -2,77 +2,186 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Haque Optics & Lenses</title>
+  <title>Haque Optics & Lenses – Colored & Clear Contact Lenses</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" href="assets/styles.css" />
 </head>
 <body>
+  <!-- TOP PROMO BAR -->
+  <div class="promo-bar">
+    🎉 Festive Offer: Flat 15% OFF on all colored lenses – Use code <strong>HAQUE15</strong>
+  </div>
+
+  <!-- HEADER / NAVIGATION -->
   <header class="site-header">
-    <div class="logo">Haque Optics & Lenses</div>
-    <nav>
-      <a href="#products">Products</a>
+    <div class="logo">Haque Optics &amp; Lenses</div>
+    <nav class="main-nav">
+      <a href="#shop">Shop</a>
+      <a href="#colors">Shop by Color</a>
+      <a href="#replacement">Replacement Cycle</a>
       <a href="#about">About</a>
       <a href="#contact">Contact</a>
     </nav>
   </header>
 
   <main>
+    <!-- HERO SECTION -->
     <section class="hero">
-      <h1>Premium Contact Lenses in India</h1>
-      <p>Colored, clear, daily and monthly lenses – safe, comfortable, and stylish.</p>
-      <a class="btn-primary" href="#products">Shop Collection</a>
+      <div class="hero-text">
+        <p class="eyebrow">Premium Contact Lenses in India</p>
+        <h1>Natural-looking colored lenses for every occasion.</h1>
+        <p class="hero-subtitle">
+          Discover comfortable, high-quality lenses in stunning shades – perfect for parties,
+          photoshoots, or everyday wear.
+        </p>
+        <div class="hero-actions">
+          <a class="btn-primary" href="#shop">Shop collection</a>
+          <a class="btn-ghost" href="#learn">Learn about lens care</a>
+        </div>
+      </div>
+      <div class="hero-image">
+        <!-- Replace this placeholder with your own product / model image later -->
+        <div class="hero-image-card">
+          <span class="badge">New</span>
+          <div class="hero-image-circle"></div>
+          <p class="hero-image-caption">Signature Hazel Collection</p>
+        </div>
+      </div>
     </section>
 
-    <section id="products" class="products-section">
-      <h2>Featured Lenses</h2>
+    <!-- SHOP BY COLOR -->
+    <section id="colors" class="pill-section">
+      <h2>Shop by Color</h2>
+      <p class="section-subtitle">Choose your vibe – from subtle hazels to bold blues.</p>
+      <div class="pill-row">
+        <button class="pill">Brown</button>
+        <button class="pill">Hazel</button>
+        <button class="pill">Gray</button>
+        <button class="pill">Blue</button>
+        <button class="pill">Green</button>
+        <button class="pill pill-outline">Trending</button>
+      </div>
+    </section>
+
+    <!-- SHOP BY REPLACEMENT CYCLE -->
+    <section id="replacement" class="pill-section">
+      <h2>Shop by Replacement Cycle</h2>
+      <p class="section-subtitle">Pick what suits your routine and comfort.</p>
+      <div class="pill-row">
+        <button class="pill">Daily</button>
+        <button class="pill">Monthly</button>
+        <button class="pill">Quarterly</button>
+        <button class="pill">Yearly</button>
+      </div>
+    </section>
+
+    <!-- PRODUCT GRID -->
+    <section id="shop" class="products-section">
+      <div class="section-heading">
+        <h2>Featured Lenses</h2>
+        <p class="section-subtitle">Start with our most-loved colors.</p>
+      </div>
+
       <div class="product-grid">
-        <!-- Product card 1 -->
+        <!-- PRODUCT 1 -->
         <article class="product-card">
-          <img src="https://via.placeholder.com/300x300" alt="Hazel Brown Lenses" />
-          <h3>Hazel Brown (Monthly)</h3>
+          <div class="product-badge-row">
+            <span class="product-badge">Best seller</span>
+            <span class="product-badge subtle">Monthly</span>
+          </div>
+          <div class="product-image-wrap">
+            <img src="https://via.placeholder.com/400x400" alt="Hazel Glow Monthly Lens" />
+          </div>
+          <h3>Hazel Glow (Monthly)</h3>
+          <p class="product-meta">Color: Hazel • Power &amp; Plano options</p>
           <p class="price">₹1,499</p>
-          <p class="short-desc">Soft, natural hazel shade for everyday wear.</p>
-          <a class="btn-secondary" href="#">View details</a>
+          <p class="short-desc">
+            A warm hazel shade that looks natural in both indoor and outdoor lighting.
+          </p>
+          <a class="btn-secondary full-width" href="products/hazel-glow-monthly.html">
+            View details
+          </a>
         </article>
 
-        <!-- Product card 2 -->
+        <!-- PRODUCT 2 -->
         <article class="product-card">
-          <img src="https://via.placeholder.com/300x300" alt="Ocean Blue Lenses" />
-          <h3>Ocean Blue (Daily)</h3>
-          <p class="price">₹1,199</p>
-          <p class="short-desc">Bright, vibrant blue for a bold look.</p>
-          <a class="btn-secondary" href="#">View details</a>
+          <div class="product-badge-row">
+            <span class="product-badge">New</span>
+            <span class="product-badge subtle">Daily</span>
+          </div>
+          <div class="product-image-wrap">
+            <img src="https://via.placeholder.com/400x400" alt="Ocean Mist Daily Lens" />
+          </div>
+          <h3>Ocean Mist (Daily)</h3>
+          <p class="product-meta">Color: Blue • Daily disposable</p>
+          <p class="price">₹1,299</p>
+          <p class="short-desc">
+            Fresh, bright blue lenses perfect for special occasions and selfies.
+          </p>
+          <a class="btn-secondary full-width" href="products/ocean-mist-daily.html">
+            View details
+          </a>
         </article>
 
-        <!-- Product card 3 -->
+        <!-- PRODUCT 3 -->
         <article class="product-card">
-          <img src="https://via.placeholder.com/300x300" alt="Emerald Green Lenses" />
-          <h3>Emerald Green (Monthly)</h3>
-          <p class="price">₹1,599</p>
-          <p class="short-desc">Rich green tone for special occasions.</p>
-          <a class="btn-secondary" href="#">View details</a>
+          <div class="product-badge-row">
+            <span class="product-badge subtle">Yearly</span>
+          </div>
+          <div class="product-image-wrap">
+            <img src="https://via.placeholder.com/400x400" alt="Emerald Luxe Yearly Lens" />
+          </div>
+          <h3>Emerald Luxe (Yearly)</h3>
+          <p class="product-meta">Color: Green • Long-wear, yearly replacement</p>
+          <p class="price">₹1,799</p>
+          <p class="short-desc">
+            Deep emerald tones that stand out while still looking elegant.
+          </p>
+          <a class="btn-secondary full-width" href="products/emerald-luxe-yearly.html">
+            View details
+          </a>
         </article>
       </div>
     </section>
 
+    <!-- TRUST / HIGHLIGHTS -->
+    <section id="learn" class="trust-section">
+      <h2>Why shop from Haque Optics &amp; Lenses?</h2>
+      <div class="trust-grid">
+        <div class="trust-item">
+          <h3>Comfort-focused</h3>
+          <p>Soft, breathable lenses selected with your eye health and comfort in mind.</p>
+        </div>
+        <div class="trust-item">
+          <h3>Curated shades</h3>
+          <p>Colors chosen to suit Indian skin tones, from ultra-natural to bold glam.</p>
+        </div>
+        <div class="trust-item">
+          <h3>Easy ordering</h3>
+          <p>Place orders directly via WhatsApp or in-store with simple guidance.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT & CONTACT -->
     <section id="about" class="about-section">
-      <h2>About Haque Optics & Lenses</h2>
+      <h2>About Haque Optics &amp; Lenses</h2>
       <p>
-        We are an Indian optical brand specializing in high-quality contact lenses.
-        Our goal is to provide safe, comfortable and stylish lenses at honest prices.
+        Haque Optics &amp; Lenses is an optical store based in India, specializing in high-quality
+        contact lenses and eye care. We focus on comfort, safety and natural-looking results.
       </p>
     </section>
 
     <section id="contact" class="contact-section">
-      <h2>Contact & Orders</h2>
-      <p>WhatsApp: <a href="https://wa.me/91XXXXXXXXXX">+91-XXXXXXXXXX</a></p>
+      <h2>Contact &amp; Orders</h2>
+      <p>WhatsApp: <a href="https://wa.me/91XXXXXXXXXX" target="_blank">+91-XXXXXXXXXX</a></p>
       <p>Instagram: <a href="#" target="_blank">@haqueoptics</a></p>
       <p>Store Location: Your City, India</p>
     </section>
   </main>
 
   <footer class="site-footer">
-    <p>© <span id="year"></span> Haque Optics & Lenses. All rights reserved.</p>
+    <p>© <span id="year"></span> Haque Optics &amp; Lenses. All rights reserved.</p>
   </footer>
 
   <script>
