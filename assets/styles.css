@@ -533,7 +533,7 @@ img {
 
   /* Smaller logo on smaller screens */
   .logo img {
-    height: 80px;
+    height: 120px;
   }
 
   /* hide desktop horizontal nav; show hamburger */
