@@ -567,41 +567,87 @@ img {
 /* ===========================
    INFLUENCERS
    =========================== */
+/* ===========================
+   INFLUENCERS
+   =========================== */
 .section-influencers {
   background: var(--bg-soft);
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
 }
 
+/* Horizontal reel row */
 .influencer-row {
   display: flex;
   gap: 1rem;
   overflow-x: auto;
-  padding-bottom: 0.3rem;
+  padding-bottom: 0.6rem;
+  scroll-snap-type: x mandatory;
 }
 
+/* Make each card snap nicely while swiping */
 .influencer-card {
-  min-width: 220px;
-  max-width: 240px;
+  scroll-snap-align: start;
+
+  min-width: 240px;
+  max-width: 260px;
+
   background: #ffffff;
   border-radius: 1rem;
   border: 1px solid var(--border);
-  padding: 0.8rem;
+  overflow: hidden;
+
+  text-decoration: none;
+  color: inherit;
+
+  display: flex;
+  flex-direction: column;
 }
 
-.influencer-image img {
-  border-radius: 0.9rem;
-  margin-bottom: 0.6rem;
+/* 9:16 Reel frame */
+.influencer-media {
+  width: 100%;
+  aspect-ratio: 9 / 16;
+  background: #000;
+  overflow: hidden;
+}
+
+.influencer-reel {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* fills frame like Instagram */
+  display: block;
+}
+
+/* Name area UNDER video */
+.influencer-caption {
+  padding: 0.75rem 0.9rem;
+  border-top: 1px solid var(--border);
 }
 
 .influencer-name {
-  font-weight: 600;
+  font-weight: 700;
   font-size: 0.95rem;
+  margin: 0;
 }
 
-.influencer-meta {
-  font-size: 0.85rem;
-  color: var(--text-muted);
+/* Small hover polish */
+.influencer-card:hover {
+  border-color: var(--gold);
+  transform: translateY(-2px);
+  transition: 0.18s ease;
+}
+
+/* Mobile: slightly smaller cards */
+@media (max-width: 640px) {
+  .influencer-card {
+    min-width: 200px;
+    max-width: 220px;
+  }
+
+  .influencer-name {
+    font-size: 0.9rem;
+  }
 }
 
 /* ===========================
