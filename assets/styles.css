@@ -17,6 +17,21 @@
   --border: #e5e7eb;
   --text-main: #111111;
   --text-muted: #6b7280;
+
+  /* Top bar height (promo bar) */
+  --promo-h: 38px;
+
+  /* Anchor scroll offset (fixed header covers content) */
+  --scroll-offset: 170px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* When you click menu links, headings won't hide under fixed header */
+section[id] {
+  scroll-margin-top: var(--scroll-offset);
 }
 
 /* ===========================
@@ -55,75 +70,86 @@ img {
 }
 
 /* ===========================
-   PROMO BAR
+   PROMO BAR (STUCK ON TOP)
    =========================== */
 .promo-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 2000;
+
+  min-height: var(--promo-h);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   background: var(--gold);
   color: var(--text-main);
   text-align: center;
   font-size: 0.9rem;
-  padding: 0.1rem 1rem;
 
+  padding: 0.2rem 1rem;
 }
 
 /* ===========================
-   HEADER & NAV
+   HEADER & NAV (STUCK + TRANSPARENT LIKE YOU WANT)
    =========================== */
-/* TRANSPARENT HEADER OVER HERO */
-/* TRANSPARENT + FIXED HEADER (stays on top, below promo bar) */
 .site-header {
-  position: fixed;
-  top: 3px;            /* sits below promo bar */
+  position: fixed;                 /* STAYS STUCK ALWAYS */
+  top: var(--promo-h);             /* sits below promo bar */
   left: 0;
   width: 100%;
-  z-index: 1000;
+  z-index: 1500;
 
-  background: transparent;
+  background: transparent;         /* stays transparent */
   border-bottom: none;
-  backdrop-filter: none;
 
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1.2rem 5vw;
+
+  padding: 0.8rem 5vw;
 }
 
-
-/* Make nav text visible on video */
-
-
-.main-nav a:hover {
-  color: var(--gold);
-}
-
-/* Logo stays visible */
-.logo img {
-  filter: brightness(1.1);
-}
-
-
+/* Logo */
 .logo {
   display: inline-flex;
   align-items: center;
 }
 
 .logo img {
-  height: 150px;
+  height: 120px;
   width: auto;
+  filter: brightness(1.1);
+}
+
+/* This wrapper is needed for the mobile hamburger dropdown */
+.nav-area {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+/* Desktop nav */
+.main-nav {
+  display: flex;
+  align-items: center;
+  gap: 1.4rem;
 }
 
 .main-nav a {
-  margin-left: 1.4rem;
   text-decoration: none;
   font-size: 0.92rem;
   text-transform: uppercase;
   letter-spacing: 0.12em;
-
-  color: var(--gold); /* GOLD nav text */
+  color: var(--gold);
   position: relative;
+  white-space: nowrap;
 }
 
-
+/* underline */
 .main-nav a::after {
   content: "";
   position: absolute;
@@ -131,18 +157,28 @@ img {
   bottom: -0.2rem;
   width: 0;
   height: 1px;
-  background: var(--gold); /* underline gold */
+  background: var(--gold);
   transition: width 0.18s ease-out;
 }
 
-
 .main-nav a:hover {
-  color: #ffffff; /* hover becomes white for contrast on video */
+  color: var(--gold-soft); /* works on video AND on white sections */
 }
-
 
 .main-nav a:hover::after {
   width: 100%;
+}
+
+/* ===========================
+   MOBILE HAMBURGER (3 LINES)
+   Requires the HTML change below
+   =========================== */
+.nav-toggle {
+  display: none; /* hidden checkbox */
+}
+
+.nav-hamburger {
+  display: none; /* only visible on mobile */
 }
 
 /* ===========================
@@ -213,74 +249,22 @@ img {
 }
 
 /* ===========================
-   HERO SECTION
-   =========================== */
-.hero {
-  padding: 3.5rem 5vw 3rem;
-  display: grid;
-  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
-  gap: 2.5rem;
-  align-items: center;
-}
-
-.hero-text {
-  max-width: 32rem;
-}
-
-.eyebrow {
-  text-transform: uppercase;
-  letter-spacing: 0.2em;
-  font-size: 0.78rem;
-  color: var(--gold-soft);
-  margin-bottom: 0.6rem;
-}
-
-.hero h1 {
-  font-size: clamp(2.1rem, 3vw, 2.7rem);
-  margin-bottom: 1rem;
-}
-
-.hero-subtitle {
-  color: var(--text-muted);
-  font-size: 0.98rem;
-  margin-bottom: 1.4rem;
-}
-
-.hero-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.9rem;
-  margin-bottom: 0.8rem;
-}
-
-.hero-note {
-  font-size: 0.9rem;
-  color: var(--text-muted);
-}
-
-/* HERO VISUAL */
-.hero-image {
-  display: flex;
-  justify-content: center;
-}
-
-/* ===========================
    FULLSCREEN VIDEO HERO
    =========================== */
-
 .hero-fullscreen {
   position: relative;
   height: 100vh;
   width: 100%;
   overflow: hidden;
+
   display: flex;
   align-items: center;
   justify-content: center;
+
   padding-top: 0;
   color: #ffffff;
 }
 
-/* BACKGROUND VIDEO */
 .hero-bg-video {
   position: absolute;
   top: 50%;
@@ -290,28 +274,26 @@ img {
   object-fit: cover;
   transform: translate(-50%, -50%);
   filter: brightness(0.65);
-  transition: all 0.8s ease-in-out;
 }
 
-/* Dark Overlay */
 .hero-overlay {
   position: absolute;
   inset: 0;
   background: linear-gradient(
     to bottom,
-    rgba(0,0,0,0.4),
-    rgba(0,0,0,0.6)
+    rgba(0,0,0,0.35),
+    rgba(0,0,0,0.65)
   );
   z-index: 1;
 }
 
-/* HERO TEXT */
 .hero-content {
   z-index: 2;
   text-align: center;
   max-width: 800px;
-  padding-top: 6rem; /* pushes text below header */
 
+  /* push text away from promo+header */
+  padding-top: 7rem;
 }
 
 .hero-content h1 {
@@ -326,46 +308,6 @@ img {
   margin-bottom: 2rem;
 }
 
-/* BUTTONS */
-.hero-actions {
-  display: flex;
-  gap: 1rem;
-  justify-content: center;
-}
-
-/* ===========================
-   MOBILE RESPONSIVE
-   =========================== */
-
-@media (max-width: 768px) {
-
-  .hero-fullscreen {
-    align-items: flex-end;     /* push text lower */
-    padding-bottom: 18vh;
-    text-align: center;
-  }
-
-  .hero-bg-video {
-    width: 200%;               /* more zoom */
-    height: 200%;
-    top: 40%;
-    left: 50%;
-  }
-
-  .hero-content h1 {
-    font-size: 2rem;
-  }
-
-  .hero-subtitle {
-    font-size: 1rem;
-  }
-
-  .hero-actions {
-    flex-direction: column;
-    gap: 0.7rem;
-  }
-}
-
 /* ===========================
    SHOP BY COLOR
    =========================== */
@@ -375,32 +317,6 @@ img {
   border-bottom: 1px solid var(--border);
 }
 
-.color-pill-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.6rem;
-  margin-bottom: 1.4rem;
-}
-
-.color-pill {
-  padding: 0.4rem 1rem;
-  border-radius: 999px;
-  border: 1px solid var(--border);
-  background: var(--bg);
-  font-size: 0.85rem;
-  cursor: pointer;
-}
-
-.color-pill:hover {
-  border-color: var(--gold);
-  color: var(--gold);
-}
-
-.pill-outline {
-  border-style: dashed;
-}
-
-/* Color card row – horizontally scrollable on small screens */
 .color-card-row {
   display: flex;
   gap: 1rem;
@@ -434,23 +350,6 @@ img {
   object-fit: cover;
   border-radius: 0.7rem;
   margin-bottom: 0.7rem;
-}
-
-
-.swatch-brown {
-  background: linear-gradient(90deg, #5c3b26, #b58a5a);
-}
-
-.swatch-hazel {
-  background: linear-gradient(90deg, #9c6f42, #f1cb86);
-}
-
-.swatch-gray {
-  background: linear-gradient(90deg, #4b5563, #9ca3af);
-}
-
-.swatch-blue {
-  background: linear-gradient(90deg, #2563eb, #60a5fa);
 }
 
 /* ===========================
@@ -543,7 +442,7 @@ img {
 }
 
 /* ===========================
-   ABOUT CARDS
+   ABOUT
    =========================== */
 .section-about {
   background: var(--bg);
@@ -625,41 +524,104 @@ img {
 }
 
 /* ===========================
-   RESPONSIVE
+   RESPONSIVE (MOBILE MENU)
    =========================== */
 @media (max-width: 840px) {
-  .main-nav a {
-    margin-left: 0.8rem;
-    font-size: 0.8rem;
+  :root {
+    --scroll-offset: 140px;
   }
 
-  .hero {
-    grid-template-columns: 1fr;
-    padding-top: 2.5rem;
+  /* Smaller logo on smaller screens */
+  .logo img {
+    height: 80px;
   }
 
-  .hero-image {
-    order: -1;
-  }
-}
+  /* hide desktop horizontal nav; show hamburger */
+  .nav-hamburger {
+    display: inline-flex;
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
 
-@media (max-width: 640px) {
-  .site-header {
+    align-items: center;
+    justify-content: center;
     flex-direction: column;
-    align-items: flex-start;
-    gap: 0.4rem;
+    gap: 5px;
+
+    cursor: pointer;
+    background: rgba(0,0,0,0.25);
+    border: 1px solid rgba(255,255,255,0.18);
+    backdrop-filter: blur(10px);
   }
 
+  .nav-hamburger span {
+    width: 22px;
+    height: 2px;
+    background: var(--gold);
+    border-radius: 2px;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+  }
+
+  /* Dropdown menu (hidden by default) */
   .main-nav {
+    position: absolute;
+    top: calc(100% + 10px);
+    right: 0;
+
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.25rem;
+
+    min-width: 240px;
+    padding: 0.75rem;
+
+    background: rgba(0,0,0,0.78);
+    border: 1px solid rgba(255,255,255,0.14);
+    border-radius: 14px;
+    backdrop-filter: blur(12px);
+
+    opacity: 0;
+    transform: translateY(-8px);
+    pointer-events: none;
+
+    transition: opacity 0.18s ease, transform 0.18s ease;
   }
 
-  .hero {
-    padding-inline: 1.3rem;
+  .main-nav a {
+    font-size: 0.85rem;
+    letter-spacing: 0.10em;
+    color: var(--gold);
+    padding: 0.65rem 0.8rem;
+    border-radius: 10px;
   }
 
-  .section {
-    padding-inline: 1.3rem;
+  .main-nav a::after {
+    display: none;
+  }
+
+  .main-nav a:hover {
+    color: #ffffff;
+    background: rgba(255,255,255,0.08);
+  }
+
+  /* When checkbox is checked -> show menu */
+  .nav-toggle:checked ~ .main-nav {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  /* Animate hamburger into X */
+  .nav-toggle:checked + .nav-hamburger span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+
+  .nav-toggle:checked + .nav-hamburger span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .nav-toggle:checked + .nav-hamburger span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
   }
 }
