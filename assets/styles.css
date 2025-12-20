@@ -63,23 +63,44 @@ img {
   text-align: center;
   font-size: 0.9rem;
   padding: 0.1rem 1rem;
+
 }
 
 /* ===========================
    HEADER & NAV
    =========================== */
+/* TRANSPARENT HEADER OVER HERO */
+/* TRANSPARENT + FIXED HEADER (stays on top, below promo bar) */
 .site-header {
-  position: sticky;
-  top: 0;
-  z-index: 20;
-  background: rgba(255, 255, 255, 0.97);
-  border-bottom: 1px solid var(--border);
-  backdrop-filter: blur(10px);
+  position: fixed;
+  top: 3px;            /* sits below promo bar */
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+
+  background: transparent;
+  border-bottom: none;
+  backdrop-filter: none;
+
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.9rem 5vw;
+  padding: 1.2rem 5vw;
 }
+
+
+/* Make nav text visible on video */
+
+
+.main-nav a:hover {
+  color: var(--gold);
+}
+
+/* Logo stays visible */
+.logo img {
+  filter: brightness(1.1);
+}
+
 
 .logo {
   display: inline-flex;
@@ -87,7 +108,7 @@ img {
 }
 
 .logo img {
-  height: 100px;
+  height: 150px;
   width: auto;
 }
 
@@ -97,9 +118,11 @@ img {
   font-size: 0.92rem;
   text-transform: uppercase;
   letter-spacing: 0.12em;
-  color: var(--text-main);
+
+  color: var(--gold); /* GOLD nav text */
   position: relative;
 }
+
 
 .main-nav a::after {
   content: "";
@@ -108,13 +131,15 @@ img {
   bottom: -0.2rem;
   width: 0;
   height: 1px;
-  background: var(--gold);
+  background: var(--gold); /* underline gold */
   transition: width 0.18s ease-out;
 }
 
+
 .main-nav a:hover {
-  color: var(--gold);
+  color: #ffffff; /* hover becomes white for contrast on video */
 }
+
 
 .main-nav a:hover::after {
   width: 100%;
@@ -251,7 +276,7 @@ img {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0 5vw;
+  padding-top: 0;
   color: #ffffff;
 }
 
@@ -285,6 +310,8 @@ img {
   z-index: 2;
   text-align: center;
   max-width: 800px;
+  padding-top: 6rem; /* pushes text below header */
+
 }
 
 .hero-content h1 {
