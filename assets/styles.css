@@ -273,8 +273,9 @@ img {
   height: 110%;
   object-fit: cover;
   transform: translate(-50%, -50%);
-  filter: brightness(0.95);
+  filter: none;
 }
+
 /* YouTube background video (fills hero like a background) */
 .hero-bg-yt{
   position: absolute;
@@ -299,9 +300,13 @@ img {
 
 
 
-.hero-overlay{
-  background: transparent; /* or rgba(0,0,0,0.1) */
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: transparent;  /* ✅ removes the translucent/dark look */
+  z-index: 1;
 }
+
 
 
 .hero-content {
